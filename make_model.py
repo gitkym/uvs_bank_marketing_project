@@ -6,20 +6,18 @@ import time as time
 import pandas as pd
 
 
-def make_model(df, X_train, y_train, X_test, y_test, model, param_grid, folds=5, scoring = 'roc_auc'):
+def make_model(X_train, y_train, X_test, y_test, model, param_grid, folds=5, scoring = 'roc_auc'):
     '''Function to fit a model and return the best parameters and accuracy score'''
-    y = df['y']
-    df = df.drop('y', axis=1)
-
+    
     # Create a pipeline for categorical features
-    cat_features = df.select_dtypes(include=['object']).columns
+    cat_features = X_train.select_dtypes(include=['object']).columns
     cat_pipeline = Pipeline([
             ('onehot', OneHotEncoder(handle_unknown='ignore'))
     ])
     # df_cat= cat_pipeline.fit_transform(df[cat_features])
 
     # Create a pipeline for numerical features
-    num_features = df.select_dtypes(include=['int64', 'float64']).columns
+    num_features = X_train.select_dtypes(include=['int64', 'float64']).columns
     num_pipeline = Pipeline([
         ('std_scaler', StandardScaler())
     ])
