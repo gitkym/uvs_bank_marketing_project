@@ -45,7 +45,8 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
     # Create a pipeline for the model
     clf = Pipeline([
         ('preprocessor', preprocessor),
-        ('over', over), ('under', under),
+        ('over', over), 
+        ('under', under),
         ('classifier', model)
     ])
     
@@ -129,7 +130,8 @@ def make_model_l(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc
     # Create a pipeline for the model
     clf = Pipeline([
         ('preprocessor', preprocessor),
-        ('over', over), ('under', under),
+        ('over', over), 
+        ('under', under),
         ('classifier', model)
     ])
     
