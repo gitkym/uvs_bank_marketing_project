@@ -1,4 +1,6 @@
-'''write functions to be utilised later to deal with outliers'''
+from sklearn.impute import SimpleImputer
+
+'''write functions to be utilised later to deal for cleaning'''
 
 # write a function to find outliers using IQR method
 def iqr(df,col):
@@ -38,3 +40,18 @@ def replace_mean(df,col):
     mean = df_replace[col].mean()
     df_replace[col] = df_replace[col].apply(lambda x: mean if x < lower_bound or x > upper_bound else x)
     return df_replace
+
+'''write function to clean data based on EDA insights'''
+
+def data_cleaner(df):
+    df = df.drop_duplicates()   # drop duplicates
+    df = df.drop(['day_of_week'], axis=1)   # drop day of week
+    df = df.drop(['duration'], axis=1)    # drop duration
+    df = df.drop(['age'], axis=1)   # drop age
+    df = df[df['education'] != 'illiterate']    # drop illiterate
+    imp_mode = SimpleImputer(missing_values='unknown',strategy='most_frequent')   # impute unknowns
+    df['marital'] = imp_mode.fit_transform(df[['marital']])  # impute unknowns
+    df['housing'] = imp_mode.fit_transform(df[['housing']]) # impute unknowns
+    df['loan'] = imp_mode.fit_transform(df[['loan']])       # impute unknowns
+    df['job'] = imp_mode.fit_transform(df[['job']])     # impute unknowns
+    df['education'] = imp_mode.fit_transform(df[['education']])    # impute unknowns
