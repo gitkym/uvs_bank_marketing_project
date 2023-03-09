@@ -13,7 +13,7 @@ from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 
 
-def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc_auc'):        # Non-Linear models
+def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc_auc', over_size = 0.2, under_size = 0.5):        # Non-Linear models
     '''Function to fit a model and return the best parameters and accuracy score'''
 
     y = df['y']
@@ -38,27 +38,13 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
     ])
 
     # Create Resampling pipeline
-    over = SMOTE(sampling_strategy=0.2)
-    under = RandomUnderSampler(sampling_strategy=0.5)
-    sampler = Pipeline([('over', over), ('under', under)])
-    # over = make_pipeline(
-    # SMOTE(sampling_strategy=0.1)
-    # )
-
-    # under = make_pipeline(
-    #     RandomUnderSampler(sampling_strategy=0.5)
-    # )
-
-    # # Combine oversampling and undersampling pipelines using make_union
-    # sampler = make_union(over, under)
+    over = SMOTE(sampling_strategy=over_size)
+    under = RandomUnderSampler(sampling_strategy=under_size)
+    # sampler = Pipeline([('over', over), ('under', under)])
 
     # Create a pipeline for the model
     clf = Pipeline([
-        # ('sampler', sampler),
-        # ('over', over), ('under', under),
-        # ("over", over),
         ('preprocessor', preprocessor),
-        # ('sampler', sampler),
         ('over', over), ('under', under),
         ('classifier', model)
     ])
@@ -112,7 +98,7 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
 
 ############################################################################################################
 
-def make_model_l(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc_auc'):       # Linear models
+def make_model_l(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc_auc', over_size = 0.2, under_size = 0.5):       # Linear models
     '''Function to fit a model and return the best parameters and accuracy score'''
     y = df['y']
     X=df.drop('y', axis=1)
@@ -135,14 +121,15 @@ def make_model_l(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc
             ('num', num_pipeline, num_features)
     ])
 
-    # Create Resampling pipeline
-    over = SMOTE(sampling_strategy=0.1)
-    under = RandomUnderSampler(sampling_strategy=0.5)
-    sampler = Pipeline([('over', over), ('under', under)])
+        # Create Resampling pipeline
+    over = SMOTE(sampling_strategy=over_size)
+    under = RandomUnderSampler(sampling_strategy=under_size)
+    # sampler = Pipeline([('over', over), ('under', under)])
+
     # Create a pipeline for the model
     clf = Pipeline([
-        ('sampler', sampler),
         ('preprocessor', preprocessor),
+        ('over', over), ('under', under),
         ('classifier', model)
     ])
     
