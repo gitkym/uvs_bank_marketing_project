@@ -42,4 +42,4 @@ param_knn = {
     'classifier__leaf_size' : [10, 20, 30, 40],
     'classifier__p' : [2],
 }
-param_nb = {'var_smoothing': np.logspace(0,-9, 10)}
+param_nb = {'classifier__var_smoothing': np.logspace(0,-9, 10)}
