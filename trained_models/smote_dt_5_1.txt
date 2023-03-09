@@ -1,0 +1,4 @@
+Tuned Hyperparameters: {'classifier__max_depth': 25, 'classifier__min_samples_leaf': 15, 'classifier__min_samples_split': 100}
+Accuracy: 0.9343765004525728
+Training Time: 4.651 minutes
+Test Score: 0.9323078714263643
