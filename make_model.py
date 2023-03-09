@@ -1,6 +1,6 @@
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
 import time as time
 import pandas as pd
@@ -43,13 +43,16 @@ def make_model(df, X_train, y_train, X_test, y_test, model, param_grid, folds=5,
     # Fit the model
     start_time = time.time()
     clf_grid.fit(X_train,y_train)
+    end_time = time.time()
+    train_time = round((end_time - start_time)/60,3)
+    # Print the tuned parameters and score
     print("Tuned Hyperparameters :", clf_grid.best_params_)
     print("Accuracy :",clf_grid.best_score_)
     # print training time in minutes
-    print('Training Time : {} minutes'.format(round((time.time() - start_time)/60,3)))
+    print('Training Time : {} minutes'.format(round(train_time)))
     print("Test Score :",clf_grid.score(X_test,y_test))
     
     # Get the results
     df_param = pd.DataFrame(clf_grid.cv_results_)
     
-    return clf_grid, df_param
+    return clf_grid, df_param, train_time

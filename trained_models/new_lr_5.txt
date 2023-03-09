@@ -1,0 +1,4 @@
+Tuned Hyperparameters: {'classifier__C': 1.0, 'classifier__penalty': 'l2', 'classifier__solver': 'liblinear'}
+Accuracy: 0.9345108763992783
+Training Time: 1.318 minutes
+Test Score: 1.318
