@@ -1,0 +1,4 @@
+Tuned Hyperparameters: {'classifier__n_estimators': 300}
+Accuracy: 0.9414924036289811
+Training Time: 2.118 minutes
+Test Score: 0.9432686442682334

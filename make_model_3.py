@@ -40,11 +40,12 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
     # Create Resampling pipeline
     over = SMOTE(sampling_strategy=0.1)
     under = RandomUnderSampler(sampling_strategy=0.5)
-    sampler = Pipeline([('over', over), ('under', under)])
+    # sampler = Pipeline([('over', over), ('under', under)])
 
     # Create a pipeline for the model
     clf = Pipeline([
-        ('sampler', sampler)
+        # ('sampler', sampler),
+        ('over', over), ('under', under),
         ('preprocessor', preprocessor),
         ('classifier', model)
     ])
@@ -127,7 +128,7 @@ def make_model_l(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc
     sampler = Pipeline([('over', over), ('under', under)])
     # Create a pipeline for the model
     clf = Pipeline([
-        ('sampler', sampler)
+        ('sampler', sampler),
         ('preprocessor', preprocessor),
         ('classifier', model)
     ])

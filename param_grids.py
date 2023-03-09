@@ -43,3 +43,6 @@ param_knn = {
     'classifier__p' : [2],
 }
 param_nb = {'classifier__var_smoothing': np.logspace(0,-9, 10)}
+param_ada = {
+    'classifier__n_estimators' : [100, 200, 300],
+}    
