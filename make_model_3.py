@@ -8,7 +8,7 @@ from sklearn.metrics import roc_auc_score, roc_curve, auc
 
 '''Apply sampling technique for imbalanced - SMOTE'''
 
-from imblearn.pipeline import Pipeline
+from imblearn.pipeline import Pipeline, make_pipeline
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 
@@ -38,15 +38,28 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
     ])
 
     # Create Resampling pipeline
-    over = SMOTE(sampling_strategy=0.1)
+    over = SMOTE(sampling_strategy=0.2)
     under = RandomUnderSampler(sampling_strategy=0.5)
-    # sampler = Pipeline([('over', over), ('under', under)])
+    sampler = Pipeline([('over', over), ('under', under)])
+    # over = make_pipeline(
+    # SMOTE(sampling_strategy=0.1)
+    # )
+
+    # under = make_pipeline(
+    #     RandomUnderSampler(sampling_strategy=0.5)
+    # )
+
+    # # Combine oversampling and undersampling pipelines using make_union
+    # sampler = make_union(over, under)
 
     # Create a pipeline for the model
     clf = Pipeline([
         # ('sampler', sampler),
-        ('over', over), ('under', under),
+        # ('over', over), ('under', under),
+        # ("over", over),
         ('preprocessor', preprocessor),
+        # ('sampler', sampler),
+        ('over', over), ('under', under),
         ('classifier', model)
     ])
     
