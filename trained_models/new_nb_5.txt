@@ -1,0 +1,4 @@
+Tuned Hyperparameters: {'classifier__var_smoothing': 1.0}
+Accuracy: 0.8661317931782518
+Training Time: 0.091 minutes
+Test Score: 0.866152947180889
