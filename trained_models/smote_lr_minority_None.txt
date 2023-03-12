@@ -1,0 +1,4 @@
+Tuned Hyperparameters: {'classifier__C': 1.0, 'classifier__penalty': 'l2', 'classifier__solver': 'lbfgs'}
+Accuracy: 0.9362919575857461
+Training Time: 1.348 minutes
+Test Score: 1.348
