@@ -37,18 +37,30 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
             ('num', num_pipeline, num_features)
     ])
 
+    
     # Create Resampling pipeline
     over = SMOTE(sampling_strategy=over_size)
-    under = RandomUnderSampler(sampling_strategy=under_size)
-    # sampler = Pipeline([('over', over), ('under', under)])
-
-    # Create a pipeline for the model
-    clf = Pipeline([
+    if under_size!=None: 
+        under = RandomUnderSampler(sampling_strategy=under_size)
+        clf = Pipeline([
         ('preprocessor', preprocessor),
         ('over', over), 
         ('under', under),
         ('classifier', model)
     ])
+    else:
+        clf = Pipeline([
+        ('preprocessor', preprocessor),
+        ('over', over), 
+        ('classifier', model)
+    ])
+
+
+    # # try using defined strategy insted of float (ratio)
+    # over = SMOTE(sampling_strategy=over_size)
+    # under = RandomUnderSampler(sampling_strategy=under_size)
+    # sampler = Pipeline([('over', over), ('under', under)])
+
     
     # Create a grid search object
     cv = StratifiedKFold(n_splits=folds, shuffle=True, random_state=42)
