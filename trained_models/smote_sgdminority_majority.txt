@@ -1,0 +1,4 @@
+Tuned Hyperparameters: {'classifier__alpha': 0.001, 'classifier__learning_rate': 'optimal', 'classifier__loss': 'log', 'classifier__penalty': 'none'}
+Accuracy: 0.9359286533864285
+Training Time: 8.624 minutes
+Test Score: 0.9366973209310364

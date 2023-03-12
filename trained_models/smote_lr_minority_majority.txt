@@ -1,0 +1,4 @@
+Tuned Hyperparameters: {'classifier__C': 316.22776601683796, 'classifier__penalty': 'none', 'classifier__solver': 'newton-cg'}
+Accuracy: 0.9363391645203201
+Training Time: 1.336 minutes
+Test Score: 1.336
