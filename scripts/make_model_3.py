@@ -1,6 +1,7 @@
 from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder
+from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder, MinMaxScaler
 from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
+from sklearn.naive_bayes import ComplementNB
 import time as time
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -27,9 +28,16 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
 
     # Create a pipeline for numerical features
     num_features = X.select_dtypes(include=['int64', 'float64']).columns
-    num_pipeline = Pipeline([
-        ('std_scaler', StandardScaler())
-    ])
+
+    if isinstance(model, ComplementNB):     # ComplimentNB() does not support negative values
+        num_pipeline = Pipeline([
+            ('minmax_scaler', MinMaxScaler())
+        ])
+    else:
+        num_pipeline = Pipeline([
+            ('std_scaler', StandardScaler())
+        ])
+
 
     # Create a column transformer
     preprocessor = ColumnTransformer([
@@ -54,12 +62,6 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
         ('over', over), 
         ('classifier', model)
     ])
-
-
-    # # try using defined strategy insted of float (ratio)
-    # over = SMOTE(sampling_strategy=over_size)
-    # under = RandomUnderSampler(sampling_strategy=under_size)
-    # sampler = Pipeline([('over', over), ('under', under)])
 
     
     # Create a grid search object

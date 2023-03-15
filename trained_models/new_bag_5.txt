@@ -1,0 +1,4 @@
+Tuned Hyperparameters: {'classifier__base_estimator': DecisionTreeClassifier(max_depth=2), 'classifier__n_estimators': 300}
+Accuracy: 0.8989205163045044
+Training Time: 0.169 minutes
+Test Score: 0.9031037717266583
