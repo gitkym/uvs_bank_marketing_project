@@ -1,0 +1,4 @@
+Tuned Hyperparameters: {'classifier__booster': 'gbtree', 'classifier__eval_metric': 'auc', 'classifier__gamma': 0.2, 'classifier__max_depth': 6}
+Accuracy: 0.9455703582904814
+Training Time: 3.558 minutes
+Test Score: 0.946265141934931
