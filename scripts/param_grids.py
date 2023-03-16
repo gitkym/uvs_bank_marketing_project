@@ -14,12 +14,12 @@ param_svc = {
     'classifier__gamma'   : ['auto'],
 }
 param_rf = {
-    # 'classifier__max_depth'    : [10, 20, 30],
-    # 'classifier__min_samples_split' : [2, 5, 10],
-    # 'classifier__min_samples_leaf'  : [1, 2],
-    'classifier__max_depth'    : [10],
-    'classifier__min_samples_split' : [5],
-    'classifier__min_samples_leaf'  : [1],
+    'classifier__max_depth'    : [10, 20, 30],
+    'classifier__min_samples_split' : [2, 5, 10],
+    'classifier__min_samples_leaf'  : [1, 2],
+#     'classifier__max_depth'    : [10],
+#     'classifier__min_samples_split' : [5],
+#     'classifier__min_samples_leaf'  : [1],
 }
 param_gbc = {
     'classifier__loss' : ['deviance', 'exponential'],
@@ -28,25 +28,25 @@ param_gbc = {
     'classifier__min_samples_leaf' : [1, 2, 5],
 }
 param_xgb = {
-    # 'classifier__max_depth' : [6, 12, 15],
-    'classifier__max_depth' : [6],
-    # 'classifier__gamma' : [0.0, 0.1, 0.2, 0.3, 0.4],
-     'classifier__gamma' : [0.2],
-    # 'classifier__eval_metric' : ['auc', 'logloss', 'merror', 'mlogloss', 'rmse'],
-    'classifier__eval_metric' : ['auc'],
-    # 'classifier__reg_alpha' : np.append(np.logspace(0,-9,5),0),
-    # 'classifier__reg_lambda' : np.append(np.logspace(0,-9,5),0),
-    # 'classifier__booster' : ['gbtree', 'gblinear', 'dart'],
-    'classifier__booster' : ['gbtree'],
+    'classifier__max_depth' : [6, 12, 15],
+    # 'classifier__max_depth' : [6],
+    'classifier__gamma' : [0.0, 0.1, 0.2, 0.3, 0.4],
+    #  'classifier__gamma' : [0.2],
+    'classifier__eval_metric' : ['auc', 'logloss', 'merror', 'mlogloss', 'rmse'],
+    # 'classifier__eval_metric' : ['auc'],
+    'classifier__reg_alpha' : np.append(np.logspace(0,-9,5),0),
+    'classifier__reg_lambda' : np.append(np.logspace(0,-9,5),0),
+    'classifier__booster' : ['gbtree', 'gblinear', 'dart'],
+    # 'classifier__booster' : ['gbtree'],
 }
 param_bag = {
     'classifier__n_estimators' : [300],
-    # 'classifier__base_estimator' : [DecisionTreeClassifier(max_depth=1),
-    #                                 DecisionTreeClassifier(max_depth=2),
-    #                                 DecisionTreeClassifier(max_depth=3),
-    #                                 LogisticRegression(penalty='l2', C=1, solver='liblinear'),
-    #                                 ],
-    'classifier__base_estimator' : [DecisionTreeClassifier(max_depth=2)],
+    'classifier__base_estimator' : [DecisionTreeClassifier(max_depth=1),
+                                    DecisionTreeClassifier(max_depth=2),
+                                    DecisionTreeClassifier(max_depth=3),
+                                    LogisticRegression(penalty='l2', C=1, solver='liblinear'),
+                                    ],
+    # 'classifier__base_estimator' : [DecisionTreeClassifier(max_depth=2)],
 
 }
 param_dt = {
@@ -74,10 +74,10 @@ param_cnb = {
 }
 param_ada = {
     'classifier__n_estimators' : [300],
-    # 'classifier__base_estimator' : [DecisionTreeClassifier(max_depth=1),
-    #                                 DecisionTreeClassifier(max_depth=2),
-    #                                 DecisionTreeClassifier(max_depth=3),
-    #                                 LogisticRegression(penalty='l2', C=1, solver='liblinear'),
-    #                                 ],
-    'classifier__base_estimator' : [DecisionTreeClassifier(max_depth=2)],
+    'classifier__base_estimator' : [DecisionTreeClassifier(max_depth=1),
+                                    DecisionTreeClassifier(max_depth=2),
+                                    DecisionTreeClassifier(max_depth=3),
+                                    LogisticRegression(penalty='l2', C=1, solver='liblinear'),
+                                    ],
+    # 'classifier__base_estimator' : [DecisionTreeClassifier(max_depth=2)],
 }    
