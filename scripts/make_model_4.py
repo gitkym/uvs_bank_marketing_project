@@ -116,18 +116,6 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
     # Calculate the classification metrics
     y_pred = clf_grid.predict(X_test)
 
-    # y_test_bin = le.fit_transform(y_test)
-    # y_pred_bin = le.transform(y_pred)
-
-    # metrics = {
-    #     'Accuracy': accuracy_score(y_test, y_pred),        
-    #     'Precision': precision_score(y_test_bin, y_pred_bin),
-    #     'Recall': recall_score(y_test_bin, y_pred_bin),
-    #     'F1-score': f1_score(y_test_bin, y_pred_bin),
-    #     'AUC-ROC': roc_auc,  # Use the roc_auc variable from the ROC curve plot
-    #     'MCC': matthews_corrcoef(y_test_bin, y_pred_bin),
-    #     'Log-Loss': log_loss(y_test_bin, y_pred_bin)
-    # }
     metrics = {
         'Accuracy': accuracy_score(y_test, y_pred),        
         'Precision': precision_score(y_test, y_pred),
@@ -151,6 +139,8 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
 def make_model_l(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc_auc', over_size = 0.2, under_size = 0.5):       # Linear models
     '''Function to fit a model and return the best parameters and accuracy score'''
     y = df['y']
+    le = LabelEncoder()
+    y = le.fit_transform(y)
     X=df.drop('y', axis=1)
     # Create a pipeline for categorical features
     cat_features = X.select_dtypes(include=['object']).columns
@@ -237,19 +227,6 @@ def make_model_l(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc
         # Calculate the classification metrics
     y_pred = clf_grid.predict(X_test)
 
-    y_test_bin = le.fit_transform(y_test)
-    y_pred_bin = le.fit_transform(y_pred)
-
-    metrics = {
-        'Accuracy': accuracy_score(y_test, y_pred),
-        'Precision': precision_score(y_test_bin, y_pred_bin),
-        'Recall': recall_score(y_test_bin, y_pred_bin),
-        'F1-score': f1_score(y_test_bin, y_pred_bin),
-        'AUC-ROC': roc_auc_score(y_test_bin, y_pred_bin),
-        'MCC': matthews_corrcoef(y_test_bin, y_pred_bin),
-        'Log-Loss': log_loss(y_test_bin, y_pred_bin)
-    }
-    
     metrics_df = pd.DataFrame(metrics, index=[0])
     
     print("Confusion Matrix:")
