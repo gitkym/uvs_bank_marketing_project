@@ -20,6 +20,8 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
     '''Function to fit a model and return the best parameters and accuracy score'''
 
     y = df['y']
+    le = LabelEncoder()
+    y = le.fit_transform(y)
     X=df.drop('y', axis=1)
     # Create a pipeline for categorical features
     cat_features = X.select_dtypes(include=['object']).columns
@@ -93,8 +95,8 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
 
     '''plot roc curve'''
     # Convert string labels to binary values
-    le = LabelEncoder()
-    y_test = le.fit_transform(y_test)
+    # le = LabelEncoder()
+    # y_test = le.fit_transform(y_test)
     y_prob = clf_grid.predict_proba(X_test)[:, 1]   # use predict_proba to get the probability scores for non-linear models
     fpr, tpr, _ = roc_curve(y_test, y_prob)
     roc_auc = auc(fpr, tpr)
@@ -114,17 +116,26 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
     # Calculate the classification metrics
     y_pred = clf_grid.predict(X_test)
 
-    y_test_bin = le.fit_transform(y_test)
-    y_pred_bin = le.transform(y_pred)
+    # y_test_bin = le.fit_transform(y_test)
+    # y_pred_bin = le.transform(y_pred)
 
+    # metrics = {
+    #     'Accuracy': accuracy_score(y_test, y_pred),        
+    #     'Precision': precision_score(y_test_bin, y_pred_bin),
+    #     'Recall': recall_score(y_test_bin, y_pred_bin),
+    #     'F1-score': f1_score(y_test_bin, y_pred_bin),
+    #     'AUC-ROC': roc_auc,  # Use the roc_auc variable from the ROC curve plot
+    #     'MCC': matthews_corrcoef(y_test_bin, y_pred_bin),
+    #     'Log-Loss': log_loss(y_test_bin, y_pred_bin)
+    # }
     metrics = {
-        'Accuracy': accuracy_score(y_test, y_pred),
-        'Precision': precision_score(y_test_bin, y_pred_bin),
-        'Recall': recall_score(y_test_bin, y_pred_bin),
-        'F1-score': f1_score(y_test_bin, y_pred_bin),
-        'AUC-ROC': roc_auc_score(y_test_bin, y_pred_bin),
-        'MCC': matthews_corrcoef(y_test_bin, y_pred_bin),
-        'Log-Loss': log_loss(y_test_bin, y_pred_bin)
+        'Accuracy': accuracy_score(y_test, y_pred),        
+        'Precision': precision_score(y_test, y_pred),
+        'Recall': recall_score(y_test, y_pred),
+        'F1-score': f1_score(y_test, y_pred),
+        'AUC-ROC': roc_auc,  # Use the roc_auc variable from the ROC curve plot
+        'MCC': matthews_corrcoef(y_test, y_pred),
+        'Log-Loss': log_loss(y_test, y_pred)
     }
     
     metrics_df = pd.DataFrame(metrics, index=[0])
