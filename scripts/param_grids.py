@@ -5,7 +5,7 @@ from sklearn.linear_model import LogisticRegression
 # make parameter grids
 param_lr = {
     'classifier__penalty' : ['l2', 'none'], 
-    'classifier__C'       : np.logspace(-5,5,5),
+    'classifier__C'       : np.logspace(2,-9,5),
     'classifier__solver'  : ['newton-cg', 'lbfgs', 'liblinear'],
 }
 param_svc = {
@@ -28,12 +28,12 @@ param_gbc = {
     'classifier__min_samples_leaf' : [1, 2, 5],
 }
 param_xgb = {
-    'classifier__max_depth' : [6, 12, 15],
-    # 'classifier__max_depth' : [6],
+    # 'classifier__max_depth' : [6, 12, 15],
+    'classifier__max_depth' : [6],
     'classifier__gamma' : [0.0, 0.1, 0.2, 0.3, 0.4],
     #  'classifier__gamma' : [0.2],
-    'classifier__eval_metric' : ['auc', 'logloss', 'merror', 'mlogloss', 'rmse'],
-    # 'classifier__eval_metric' : ['auc'],
+    # 'classifier__eval_metric' : ['auc', 'logloss', 'merror', 'mlogloss', 'rmse'],
+    'classifier__eval_metric' : ['auc'],
     'classifier__reg_alpha' : np.append(np.logspace(0,-9,5),0),
     'classifier__reg_lambda' : np.append(np.logspace(0,-9,5),0),
     'classifier__booster' : ['gbtree', 'gblinear', 'dart'],
