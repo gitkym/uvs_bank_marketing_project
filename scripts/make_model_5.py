@@ -2,7 +2,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder, MinMaxScaler
 from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
 from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score, roc_auc_score,
-                             matthews_corrcoef, log_loss, confusion_matrix, classification_report)
+                             matthews_corrcoef, log_loss, confusion_matrix, classification_report, balanced_accuracy_score)
 from sklearn.naive_bayes import ComplementNB
 import time as time
 import pandas as pd
@@ -120,7 +120,8 @@ def make_model(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc_a
     y_pred = clf_grid.predict(X_test)
 
     metrics = {
-        'Accuracy': accuracy_score(y_test, y_pred),        
+        'Accuracy': accuracy_score(y_test, y_pred),     
+        'Balanced Accuracy': balanced_accuracy_score(y_test, y_pred),   
         'Precision': precision_score(y_test, y_pred),
         'Recall': recall_score(y_test, y_pred),
         'F1-score': f1_score(y_test, y_pred),

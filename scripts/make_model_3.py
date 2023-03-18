@@ -18,6 +18,8 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
     '''Function to fit a model and return the best parameters and accuracy score'''
 
     y = df['y']
+    le = LabelEncoder()
+    y = le.fit_transform(y)
     X=df.drop('y', axis=1)
     # Create a pipeline for categorical features
     cat_features = X.select_dtypes(include=['object']).columns
@@ -90,9 +92,6 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
     test_score = clf_grid.score(X_test,y_test)
 
     '''plot roc curve'''
-    # Convert string labels to binary values
-    le = LabelEncoder()
-    y_test = le.fit_transform(y_test)
     y_prob = clf_grid.predict_proba(X_test)[:, 1]   # use predict_proba to get the probability scores for non-linear models
     fpr, tpr, _ = roc_curve(y_test, y_prob)
     roc_auc = auc(fpr, tpr)
@@ -180,9 +179,6 @@ def make_model_l(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc
     test_score = clf_grid.score(X_test,y_test)
 
     '''plot roc curve'''
-    # Convert string labels to binary values
-    le = LabelEncoder()
-    y_test = le.fit_transform(y_test)
     y_score = clf_grid.decision_function(X_test)    # use decision function to get the probability scores for linear models
     fpr, tpr, _ = roc_curve(y_test, y_score)
     roc_auc = auc(fpr, tpr)

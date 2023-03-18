@@ -1,0 +1,4 @@
+Tuned Hyperparameters: {'classifier__bootstrap_type': 'Bernoulli', 'classifier__depth': 6, 'classifier__l2_leaf_reg': 5}
+Accuracy: 0.9490101425690955
+Training Time: 25.344 minutes
+Test Score: 0.949314507773159
