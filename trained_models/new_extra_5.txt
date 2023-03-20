@@ -1,4 +1,4 @@
 Tuned Hyperparameters: {'classifier__class_weight': None, 'classifier__max_depth': None, 'classifier__max_features': 'sqrt', 'classifier__min_samples_leaf': 1, 'classifier__min_samples_split': 10, 'classifier__n_estimators': 300}
-Accuracy: 0.9276952425515832
-Training Time: 30.869 minutes
-Test Score: 0.9261904674732602
+Accuracy: 0.9270773798871668
+Training Time: 25.761 minutes
+Test Score: 0.9228794716425336
