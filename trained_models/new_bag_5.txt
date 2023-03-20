@@ -1,4 +1,4 @@
 Tuned Hyperparameters: {'classifier__base_estimator': LogisticRegression(C=1, solver='liblinear'), 'classifier__n_estimators': 300}
-Accuracy: 0.936256610066798
-Training Time: 1.253 minutes
-Test Score: 0.9370338612583944
+Accuracy: 0.937849420797652
+Training Time: 1.219 minutes
+Test Score: 0.9333372552827596
