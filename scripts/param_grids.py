@@ -28,6 +28,7 @@ param_gbc = {
     'classifier__min_samples_leaf' : [1, 2, 5],
 }
 param_xgb = {
+<<<<<<< HEAD
     # 'classifier__n_jobs' : -1,
     # 'classifier__max_depth' : [6, 12, 15],
     'classifier__max_depth' : [6],
@@ -37,6 +38,16 @@ param_xgb = {
     'classifier__eval_metric' : ['auc'],
     'classifier__reg_alpha' : np.append(np.logspace(0,-6,3),0),
     'classifier__reg_lambda' : np.append(np.logspace(0,-6,3),0),
+=======
+    # 'classifier__max_depth' : [6, 12, 15],
+    'classifier__max_depth' : [6],
+    'classifier__gamma' : [0.0, 0.1, 0.2, 0.3, 0.4],
+    #  'classifier__gamma' : [0.2],
+    # 'classifier__eval_metric' : ['auc', 'logloss', 'merror', 'mlogloss', 'rmse'],
+    'classifier__eval_metric' : ['auc'],
+    'classifier__reg_alpha' : np.append(np.logspace(0,-9,5),0),
+    'classifier__reg_lambda' : np.append(np.logspace(0,-9,5),0),
+>>>>>>> 1a3370b85a00f48c59156c940b135cc8f0d61a71
     'classifier__booster' : ['gbtree', 'gblinear', 'dart'],
     # 'classifier__booster' : ['gbtree'],
 }
@@ -81,6 +92,7 @@ param_ada = {
                                     LogisticRegression(penalty='l2', C=1, solver='liblinear'),
                                     ],
     # 'classifier__base_estimator' : [DecisionTreeClassifier(max_depth=2)],
+<<<<<<< HEAD
 }  
 param_lgbm = {
     'classifier__boosting_type': ['gbdt', 'dart', 'goss'],
@@ -112,3 +124,6 @@ param_rgf = {
     'classifier__max_leaf': [1000, 2000, 3000],
     'classifier__algorithm': ["RGF", "RGF_Opt", "RGF_Sib"],
 }
+=======
+}    
+>>>>>>> 1a3370b85a00f48c59156c940b135cc8f0d61a71

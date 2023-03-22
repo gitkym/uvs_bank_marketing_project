@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 Tuned Hyperparameters: {'classifier__max_depth': 30, 'classifier__min_samples_leaf': 1, 'classifier__min_samples_split': 10}
 Accuracy: 0.9448129176091274
 Training Time: 1.16 minutes
 Test Score: 0.9417117041130145
+=======
+Tuned Hyperparameters: {'classifier__max_depth': 20, 'classifier__min_samples_leaf': 2, 'classifier__min_samples_split': 5}
+Accuracy: 0.9438728006148438
+Training Time: 1.36 minutes
+Test Score: 0.9424278792467531
+>>>>>>> 1a3370b85a00f48c59156c940b135cc8f0d61a71

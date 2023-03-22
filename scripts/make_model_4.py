@@ -1,6 +1,8 @@
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder, MinMaxScaler
 from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
+from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score, roc_auc_score,
+                             matthews_corrcoef, log_loss, confusion_matrix, classification_report)
 from sklearn.naive_bayes import ComplementNB
 import time as time
 import pandas as pd
@@ -18,11 +20,8 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
     '''Function to fit a model and return the best parameters and accuracy score'''
 
     y = df['y']
-<<<<<<< HEAD
     le = LabelEncoder()
     y = le.fit_transform(y)
-=======
->>>>>>> 1a3370b85a00f48c59156c940b135cc8f0d61a71
     X=df.drop('y', axis=1)
     # Create a pipeline for categorical features
     cat_features = X.select_dtypes(include=['object']).columns
@@ -95,12 +94,9 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
     test_score = clf_grid.score(X_test,y_test)
 
     '''plot roc curve'''
-<<<<<<< HEAD
-=======
     # Convert string labels to binary values
-    le = LabelEncoder()
-    y_test = le.fit_transform(y_test)
->>>>>>> 1a3370b85a00f48c59156c940b135cc8f0d61a71
+    # le = LabelEncoder()
+    # y_test = le.fit_transform(y_test)
     y_prob = clf_grid.predict_proba(X_test)[:, 1]   # use predict_proba to get the probability scores for non-linear models
     fpr, tpr, _ = roc_curve(y_test, y_prob)
     roc_auc = auc(fpr, tpr)
@@ -117,13 +113,34 @@ def make_model_nl(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'ro
     plt.legend(loc="lower right")
     plt.show()
     
-    return clf_grid, train_time, test_score
+    # Calculate the classification metrics
+    y_pred = clf_grid.predict(X_test)
 
+    metrics = {
+        'Accuracy': accuracy_score(y_test, y_pred),        
+        'Precision': precision_score(y_test, y_pred),
+        'Recall': recall_score(y_test, y_pred),
+        'F1-score': f1_score(y_test, y_pred),
+        'AUC-ROC': roc_auc,  # Use the roc_auc variable from the ROC curve plot
+        'MCC': matthews_corrcoef(y_test, y_pred),
+        'Log-Loss': log_loss(y_test, y_pred)
+    }
+    
+    metrics_df = pd.DataFrame(metrics, index=[0])
+    
+    print("Confusion Matrix:")
+    print(confusion_matrix(y_test, y_pred))
+    print("\nClassification Report:")
+    print(classification_report(y_test, y_pred))
+
+    return clf_grid, train_time, test_score, metrics_df
 ############################################################################################################
 
 def make_model_l(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc_auc', over_size = 0.2, under_size = 0.5):       # Linear models
     '''Function to fit a model and return the best parameters and accuracy score'''
     y = df['y']
+    le = LabelEncoder()
+    y = le.fit_transform(y)
     X=df.drop('y', axis=1)
     # Create a pipeline for categorical features
     cat_features = X.select_dtypes(include=['object']).columns
@@ -188,12 +205,9 @@ def make_model_l(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc
     test_score = clf_grid.score(X_test,y_test)
 
     '''plot roc curve'''
-<<<<<<< HEAD
-=======
     # Convert string labels to binary values
     le = LabelEncoder()
     y_test = le.fit_transform(y_test)
->>>>>>> 1a3370b85a00f48c59156c940b135cc8f0d61a71
     y_score = clf_grid.decision_function(X_test)    # use decision function to get the probability scores for linear models
     fpr, tpr, _ = roc_curve(y_test, y_score)
     roc_auc = auc(fpr, tpr)
@@ -210,4 +224,14 @@ def make_model_l(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc
     plt.legend(loc="lower right")
     plt.show()
     
-    return clf_grid, train_time, test_score
+        # Calculate the classification metrics
+    y_pred = clf_grid.predict(X_test)
+
+    metrics_df = pd.DataFrame(metrics, index=[0])
+    
+    print("Confusion Matrix:")
+    print(confusion_matrix(y_test, y_pred))
+    print("\nClassification Report:")
+    print(classification_report(y_test, y_pred))
+
+    return clf_grid, train_time, test_score, metrics_df
