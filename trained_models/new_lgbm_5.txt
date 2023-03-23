@@ -1,4 +1,4 @@
-Tuned Hyperparameters: {'classifier__boosting_type': 'dart', 'classifier__reg_alpha': 0.001, 'classifier__reg_lambda': 0.0}
-Accuracy: 0.9497331317694331
-Training Time: 2.709 minutes
-Test Score: 0.9471159141603401
+Tuned Hyperparameters: {'classifier__boosting_type': 'dart', 'classifier__reg_alpha': 0.0, 'classifier__reg_lambda': 0.001}
+Accuracy: 0.9500188042762385
+Training Time: 2.684 minutes
+Test Score: 0.9478853722863241

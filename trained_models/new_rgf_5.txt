@@ -1,4 +1,4 @@
-Tuned Hyperparameters: {'classifier__algorithm': 'RGF', 'classifier__max_leaf': 2000}
-Accuracy: 0.9473961049782901
-Training Time: 6.913 minutes
-Test Score: 0.9450367611880106
+Tuned Hyperparameters: {'classifier__algorithm': 'RGF', 'classifier__max_leaf': 3000}
+Accuracy: 0.9476882432729414
+Training Time: 6.981 minutes
+Test Score: 0.9454083068306418

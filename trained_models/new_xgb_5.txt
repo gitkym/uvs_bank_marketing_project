@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-Tuned Hyperparameters: {'classifier__booster': 'dart', 'classifier__eval_metric': 'auc', 'classifier__gamma': 0.2, 'classifier__max_depth': 6, 'classifier__reg_alpha': 0.001, 'classifier__reg_lambda': 1.0}
-Accuracy: 0.9451062607111955
-Training Time: 32.272 minutes
-Test Score: 0.9458194027343548
-=======
-Tuned Hyperparameters: {'classifier__booster': 'gbtree', 'classifier__eval_metric': 'auc', 'classifier__gamma': 0.2, 'classifier__max_depth': 6}
-Accuracy: 0.9455703582904814
-Training Time: 3.558 minutes
-Test Score: 0.946265141934931
->>>>>>> 1a3370b85a00f48c59156c940b135cc8f0d61a71
+Tuned Hyperparameters: {'classifier__booster': 'dart', 'classifier__eval_metric': 'auc', 'classifier__gamma': 0.1, 'classifier__max_depth': 6, 'classifier__reg_alpha': 1.0, 'classifier__reg_lambda': 1.0}
+Accuracy: 0.9455538837034927
+Training Time: 29.477 minutes
+Test Score: 0.9446258070415058

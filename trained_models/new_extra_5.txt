@@ -1,4 +1,4 @@
-Tuned Hyperparameters: {'classifier__class_weight': None, 'classifier__max_depth': None, 'classifier__max_features': 'sqrt', 'classifier__min_samples_leaf': 1, 'classifier__min_samples_split': 10, 'classifier__n_estimators': 300}
-Accuracy: 0.9270773798871668
-Training Time: 25.761 minutes
-Test Score: 0.9228794716425336
+Tuned Hyperparameters: {'classifier__class_weight': None, 'classifier__max_depth': None, 'classifier__max_features': 'auto', 'classifier__min_samples_leaf': 1, 'classifier__min_samples_split': 10, 'classifier__n_estimators': 300}
+Accuracy: 0.9270971941206542
+Training Time: 25.674 minutes
+Test Score: 0.9256052501199621

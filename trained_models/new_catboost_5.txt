@@ -1,4 +1,4 @@
 Tuned Hyperparameters: {'classifier__depth': 4, 'classifier__l2_leaf_reg': 1}
-Accuracy: 0.9490130272766141
-Training Time: 5.814 minutes
-Test Score: 0.947165529183202
+Accuracy: 0.9490719159439273
+Training Time: 5.595 minutes
+Test Score: 0.9476602618397393
