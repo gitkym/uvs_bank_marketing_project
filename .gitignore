@@ -3,3 +3,4 @@ trained_models/tuned_ExtraTreesClassifier_None.pkl
 trained_models/tuned_ExtraTreesClassifier.pkl
 trained_models/new_extra_5.pkl
 pres_models/ExtraTreesClassifier.pkl
+trained_models/tuned_ExtraTreesClassifier_[0.2, 0.5].pkl
