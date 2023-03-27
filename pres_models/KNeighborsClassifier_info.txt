@@ -1,0 +1,9 @@
+Tuned Hyperparameters: {'classifier__algorithm': 'auto', 'classifier__leaf_size': 20, 'classifier__n_neighbors': 7, 'classifier__p': 2, 'classifier__weights': 'uniform'}
+Accuracy: 0.9130637742078754
+Training Time: 2.637 minutes
+Test Score: 0.9069273203705815
+Metrics:    Training Time  Accuracy  Balanced Accuracy  F1-score   AUC-ROC  Precision  \
+0          2.637  0.866076           0.841112  0.587355  0.906927   0.461222   
+
+     Recall       MCC  Log-Loss  
+0  0.808445  0.543356  4.625668  

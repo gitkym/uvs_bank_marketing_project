@@ -4,13 +4,13 @@ from sklearn.linear_model import LogisticRegression
 
 # make parameter grids
 param_lr = {
-    'classifier__penalty' : ['l2', 'none'], 
-    'classifier__C'       : np.logspace(2,-9,5),
-    'classifier__solver'  : ['newton-cg', 'lbfgs', 'liblinear'],
+    'classifier__penalty' : ['l2', 'l1', 'elasticnet', 'none'],
+    'classifier__C'       : [1, 10, 100],
+    'classifier__solver'  : ['newton-cg', 'lbfgs', 'liblinear', 'saga'],
 }
 param_svc = {
     'classifier__C'       : [1, 10, 100],
-    'classifier__kernel'  : ['linear', 'rbf', 'sigmoid'],
+    'classifier__kernel'  : ['linear', 'rbf'],
     'classifier__gamma'   : ['auto'],
 }
 param_rf = {
@@ -56,8 +56,10 @@ param_dt = {
     'classifier__min_samples_leaf'  : [1, 2, 5, 10, 15],
 }
 param_sgd = {
+    # 'classifier_n_jobs' : [-1],
     'classifier__loss' : ['hinge', 'log', 'squared_hinge'],
-    'classifier__penalty' : ['l2', 'l1', 'elasticnet', 'none'],
+    # 'classifier__penalty' : ['l2', 'l1', 'elasticnet', 'none'],
+    'classifier__penalty' : ['elasticnet', 'none'],
     'classifier__alpha' : [0.0001, 0.001, 0.01],
     # 'classifier__learning_rate' : ['constant', 'optimal', 'invscaling', 'adaptive'],
 }
@@ -74,6 +76,7 @@ param_cnb = {
     'classifier__alpha' : np.append(np.logspace(0,-9,10),0),
 }
 param_ada = {
+    # 'classifier_n_jobs' : [-1],
     'classifier__n_estimators' : [300],
     'classifier__base_estimator' : [DecisionTreeClassifier(max_depth=1),
                                     DecisionTreeClassifier(max_depth=2),
@@ -83,6 +86,7 @@ param_ada = {
     # 'classifier__base_estimator' : [DecisionTreeClassifier(max_depth=2)],
 }  
 param_lgbm = {
+    # 'classifier_n_jobs' : [-1],
     'classifier__boosting_type': ['gbdt', 'dart', 'goss'],
     # 'classifier__num_leaves': [31, 50, 100],
     # 'classifier__learning_rate': [0.01, 0.05, 0.1],
@@ -93,6 +97,7 @@ param_lgbm = {
     'classifier__reg_lambda' : np.append(np.logspace(0,-6,3),0)
 }
 param_cat = {
+    # 'classifier_n_jobs' : [-1],
     # 'classifier__learning_rate': [0.01, 0.05, 0.1],
     'classifier__depth': [4, 6, 8],
     'classifier__l2_leaf_reg': [1, 3, 5],
@@ -101,6 +106,7 @@ param_cat = {
     # 'classifier__bootstrap_type': ['Bayesian', 'Bernoulli', 'MVS', 'No'],
 }  
 param_extra = {
+    # 'classifier_n_jobs' : [-1],
     'classifier__n_estimators': [300],
     'classifier__max_depth': [None, 6, 12],
     'classifier__min_samples_split': [2, 5, 10],
@@ -109,6 +115,7 @@ param_extra = {
     'classifier__class_weight': [None, 'balanced', 'balanced_subsample'],
 }
 param_rgf = {
+    # 'classifier_n_jobs' : [-1],
     'classifier__max_leaf': [1000, 2000, 3000],
     'classifier__algorithm': ["RGF", "RGF_Opt", "RGF_Sib"],
 }

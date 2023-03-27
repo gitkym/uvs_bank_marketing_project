@@ -1,0 +1,9 @@
+Tuned Hyperparameters: {'classifier__class_weight': None, 'classifier__max_depth': None, 'classifier__max_features': 'sqrt', 'classifier__min_samples_leaf': 1, 'classifier__min_samples_split': 10, 'classifier__n_estimators': 300}
+Accuracy: 0.9273178333401211
+Training Time: 20.394 minutes
+Test Score: 0.9239704351166625
+Metrics:    Training Time  Accuracy  Balanced Accuracy  F1-score  AUC-ROC  Precision  \
+0         20.394   0.88647            0.77728   0.56853  0.92397    0.51505   
+
+   Recall      MCC  Log-Loss  
+0  0.6344  0.50761    3.9211  

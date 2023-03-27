@@ -1,13 +1,12 @@
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder, MinMaxScaler
 from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
-from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score, roc_auc_score,
+from sklearn.metrics import (accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, roc_curve, auc,
                              matthews_corrcoef, log_loss, confusion_matrix, classification_report, balanced_accuracy_score)
 from sklearn.naive_bayes import ComplementNB
 import time as time
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.metrics import roc_auc_score, roc_curve, auc
 
 '''Apply sampling technique for imbalanced - SMOTE'''
 
@@ -16,7 +15,7 @@ from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
 
 
-def make_model(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc_auc', resampling = [0.2, 0.5]):        # Non-Linear models
+def make_model(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc_auc', resampling = None):        # Non-Linear models
     '''Function to fit a model and return the best parameters and accuracy score'''
 
     y = df['y']
@@ -50,11 +49,12 @@ def make_model(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc_a
     ])
 
     # Create Resampling pipeline
-    if resampling!=None:
+    if resampling is not None:
+        # resampling = [0.2, 0.5]
         over_size, under_size = resampling[0], resampling[1]
         # Create Resampling pipeline
         over = SMOTE(sampling_strategy=over_size)
-        if under_size!=None: 
+        if under_size is not None: 
             under = RandomUnderSampler(sampling_strategy=under_size)
             pipe_sampling = Pipeline([
             ('preprocessor', preprocessor),
@@ -129,16 +129,18 @@ def make_model(df, model, param_grid, test_size = 0.2, folds=5, scoring = 'roc_a
     y_pred = clf_grid.predict(X_test)
 
     metrics = {
+        'Training Time': train_time,
         'Accuracy': accuracy_score(y_test, y_pred),     
         'Balanced Accuracy': balanced_accuracy_score(y_test, y_pred),   
-        'Precision': precision_score(y_test, y_pred),
-        'Recall': recall_score(y_test, y_pred),
         'F1-score': f1_score(y_test, y_pred),
         'AUC-ROC': roc_auc,  # Use the roc_auc variable from the ROC curve plot
+        'Precision': precision_score(y_test, y_pred),
+        'Recall': recall_score(y_test, y_pred),
         'MCC': matthews_corrcoef(y_test, y_pred),
         'Log-Loss': log_loss(y_test, y_pred)
     }
-    
+    # round metrics
+    metrics = {k: round(v, 5) for k, v in metrics.items()}
     metrics_df = pd.DataFrame(metrics, index=[0])
     
     print("Confusion Matrix:")
