@@ -1,0 +1,9 @@
+Tuned Hyperparameters: {'classifier__C': 1, 'classifier__penalty': 'l1', 'classifier__solver': 'saga'}
+Accuracy: 0.7923647223560344
+Training Time: 1.822 minutes
+Test Score: 0.7913951957064576
+Metrics:    Training Time  Accuracy  Balanced Accuracy  F1-score  AUC-ROC  Precision  \
+0          1.822   0.86559            0.72619   0.48821   0.7914    0.44295   
+
+    Recall      MCC  Log-Loss  
+0  0.54377  0.41464   4.64242  

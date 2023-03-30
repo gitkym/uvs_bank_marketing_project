@@ -1,9 +1,9 @@
-Tuned Hyperparameters: {'classifier__C': 10, 'classifier__penalty': 'l2', 'classifier__solver': 'lbfgs'}
-Accuracy: 0.9379700831406481
-Training Time: 1.796 minutes
-Test Score: 0.9321625132985981
+Tuned Hyperparameters: {'classifier__C': 1, 'classifier__penalty': 'l1', 'classifier__solver': 'liblinear'}
+Accuracy: 0.7922596680983178
+Training Time: 1.74 minutes
+Test Score: 0.7919840551492243
 Metrics:    Training Time  Accuracy  Balanced Accuracy  F1-score  AUC-ROC  Precision  \
-0          1.796    0.8872            0.82454   0.60818  0.93216      0.515   
+0           1.74   0.86693            0.72337   0.48689  0.79198    0.44635   
 
     Recall      MCC  Log-Loss  
-0  0.74253  0.55726   3.89595  
+0  0.53553  0.41342   4.59629  

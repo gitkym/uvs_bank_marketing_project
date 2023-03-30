@@ -1,0 +1,9 @@
+Tuned Hyperparameters: {'classifier__C': 1, 'classifier__gamma': 'auto', 'classifier__kernel': 'rbf'}
+Accuracy: 0.7701345732730539
+Training Time: 148.728 minutes
+Test Score: 0.7745749941702348
+Metrics:    Training Time  Accuracy  Balanced Accuracy  F1-score  AUC-ROC  Precision  \
+0        148.728   0.86875             0.7253   0.49129  0.77457    0.45234   
+
+    Recall      MCC  Log-Loss  
+0  0.53759  0.41863   4.53338  
