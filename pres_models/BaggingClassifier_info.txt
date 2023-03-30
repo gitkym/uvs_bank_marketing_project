@@ -1,9 +1,9 @@
 Tuned Hyperparameters: {'classifier__base_estimator': LogisticRegression(C=1, solver='liblinear'), 'classifier__n_estimators': 300}
-Accuracy: 0.7924408109711136
-Training Time: 1.141 minutes
-Test Score: 0.7902446942048945
+Accuracy: 0.7906764614444484
+Training Time: 1.102 minutes
+Test Score: 0.7908117230376018
 Metrics:    Training Time  Accuracy  Balanced Accuracy  F1-score  AUC-ROC  Precision  \
-0          1.141   0.86583            0.72231   0.48437  0.79024    0.44283   
+0          1.102   0.86389            0.72567   0.48554   0.7908    0.43791   
 
    Recall      MCC  Log-Loss  
-0  0.5345  0.41042   4.63403  
+0  0.5448  0.41141   4.70113  

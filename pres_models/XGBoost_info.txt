@@ -1,9 +1,9 @@
-Tuned Hyperparameters: {'classifier__booster': 'gblinear', 'classifier__eval_metric': 'auc', 'classifier__gamma': 0.2, 'classifier__max_depth': 6, 'classifier__reg_alpha': 0.001, 'classifier__reg_lambda': 1e-06}
-Accuracy: 0.7923195546797658
-Training Time: 28.313 minutes
-Test Score: 0.7912068003767907
+Tuned Hyperparameters: {'classifier__booster': 'gblinear', 'classifier__eval_metric': 'auc', 'classifier__gamma': 0.3, 'classifier__max_depth': 6, 'classifier__reg_alpha': 0.001, 'classifier__reg_lambda': 0.001}
+Accuracy: 0.792293948145083
+Training Time: 28.521 minutes
+Test Score: 0.7907718892621042
 Metrics:    Training Time  Accuracy  Balanced Accuracy  F1-score  AUC-ROC  Precision  \
-0         28.313   0.86535            0.72382   0.48538  0.79121    0.44172   
+0         28.521    0.8651            0.72368   0.48493  0.79077    0.44098   
 
     Recall      MCC  Log-Loss  
-0  0.53862  0.41145   4.65081  
+0  0.53862  0.41091   4.65919  

@@ -1,9 +1,9 @@
-Tuned Hyperparameters: {'classifier__algorithm': 'RGF', 'classifier__max_leaf': 2000}
-Accuracy: 0.9472274529680835
-Training Time: 6.809 minutes
-Test Score: 0.9453391293130516
+Tuned Hyperparameters: {'classifier__algorithm': 'RGF', 'classifier__max_leaf': 3000}
+Accuracy: 0.7974948188086203
+Training Time: 6.43 minutes
+Test Score: 0.7978102055266882
 Metrics:    Training Time  Accuracy  Balanced Accuracy  F1-score  AUC-ROC  Precision  \
-0          6.809   0.89594            0.85849   0.64718  0.94534    0.53909   
+0           6.43   0.87955            0.71581   0.49542  0.79781    0.48945   
 
     Recall      MCC  Log-Loss  
-0  0.80947  0.60576   3.59401  
+0  0.50154  0.42709   4.16014  
