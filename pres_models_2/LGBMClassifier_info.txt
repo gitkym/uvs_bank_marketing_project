@@ -1,0 +1,9 @@
+Tuned Hyperparameters: {'classifier__boosting_type': 'dart', 'classifier__reg_alpha': 1e-06, 'classifier__reg_lambda': 1.0}
+Accuracy: 0.8044713674941552
+Training Time: 3.519 minutes
+Test Score: 0.803023043342975
+Metrics:    Training Time  Accuracy  Balanced Accuracy  F1-score  AUC-ROC  Precision  \
+0          3.519   0.87664            0.73602   0.51341  0.80302    0.47986   
+
+    Recall     MCC  Log-Loss  
+0  0.55201  0.4446   4.26079  

@@ -1,0 +1,9 @@
+Tuned Hyperparameters: {'classifier__base_estimator': DecisionTreeClassifier(max_depth=1), 'classifier__n_estimators': 300}
+Accuracy: 0.792491652103233
+Training Time: 1.715 minutes
+Test Score: 0.7920364344376456
+Metrics:    Training Time  Accuracy  Balanced Accuracy  F1-score  AUC-ROC  Precision  \
+0          1.715   0.87263            0.70921   0.47837  0.79204     0.4625   
+
+    Recall      MCC  Log-Loss  
+0  0.49537  0.40624   4.39918  
